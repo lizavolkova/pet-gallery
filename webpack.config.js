@@ -11,8 +11,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js'
     },
+    devtool: "source-map",
     module: {
-        devtool: "source-map",
         rules: [
             {
                 test: /\.js$/,
