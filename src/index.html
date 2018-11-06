@@ -1,0 +1,11 @@
+<!-- Put your final HTML here -->
+<html>
+    <head>
+        <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+    </head>
+    <body>
+        <div>Hello, world!</div>
+        <div id="root"></div>
+        <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>">
+    </body>
+</html>
