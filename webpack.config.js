@@ -12,6 +12,7 @@ module.exports = {
         filename: '[name].[hash].js'
     },
     module: {
+        devtool: "source-map",
         rules: [
             {
                 test: /\.js$/,
@@ -23,6 +24,15 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use:  [  'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        attrs: [':data-src']
+                    }
+                }
             }
         ]
     },
@@ -34,7 +44,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: false,
             hash: true,
-            template: './src/index.html',
+            title: 'My Awesome application',
+            template: './src/index.html.ejs',
+            //template: require('html-webpack-template'),
             filename: 'index.html'
         }),
         new WebpackMd5Hash()
