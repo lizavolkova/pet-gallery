@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: { main: './src/index.js' },
@@ -33,6 +34,10 @@ module.exports = {
                         attrs: [':data-src']
                     }
                 }
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [ 'file-loader']
             }
         ]
     },
@@ -49,6 +54,9 @@ module.exports = {
             //template: require('html-webpack-template'),
             filename: 'index.html'
         }),
-        new WebpackMd5Hash()
+        new WebpackMd5Hash(),
+        new CopyWebpackPlugin([
+            {from:'./src/assets',to:'assets'}
+        ])
     ]
 };

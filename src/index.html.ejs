@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -9,7 +9,9 @@
 </head>
 <body>
 <%= require('./components/Header/header.html') %>
-<div>[MAIN GALLERY HERE]</div>
+<main>
+    <%= require('./components/Gallery/gallery.html') %>
+</main>
 <%= require('./components/Footer/footer.html') %>
 <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>">
 </body>
