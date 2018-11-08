@@ -1,0 +1,25 @@
+#gallery-comp {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  grid-auto-rows: 5px;
+  width: 100%;
+
+  .item {
+    background-size: cover;
+    object-fit: cover;
+
+    &.loaded img {
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 100%;
+    transition: opacity 0.5s;
+    transition-delay: 0.2s;
+    opacity: 0;
+
+
+  }
+}

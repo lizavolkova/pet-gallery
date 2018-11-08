@@ -55,8 +55,8 @@ module.exports = {
             filename: 'index.html'
         }),
         new WebpackMd5Hash(),
-        new CopyWebpackPlugin([
-            {from:'./src/assets',to:'assets'}
-        ])
+        new CopyWebpackPlugin([{
+            from:'./src/assets', to:'assets'
+        }])
     ]
 };

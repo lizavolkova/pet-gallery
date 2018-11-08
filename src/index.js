@@ -1,2 +1,5 @@
 import './core/global.scss';
-console.log("hello, world");
+import { Gallery } from './components/Gallery/gallery';
+
+const gallery = new Gallery();
+gallery.load();
