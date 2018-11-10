@@ -8,18 +8,24 @@
   .item {
     background-size: cover;
     object-fit: cover;
+    grid-row-end: span 17;
 
-    &.loaded img {
-      opacity: 1;
+    &.loaded {
+      animation: fadeIn 1s ease-out;
     }
   }
 
   img {
     width: 100%;
-    transition: opacity 0.5s;
-    transition-delay: 0.2s;
-    opacity: 0;
+    //min-height: 50px;
+  }
 
-
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }
