@@ -1,0 +1,27 @@
+.global-header {
+  padding: rem(20px);
+
+  blockquote {
+    max-width: 550px;
+    text-align: left;
+    margin: rem(20px);
+    padding: rem(20px);
+    border-left: 2px solid #428bca;
+    background-color: #fff;
+
+    &:before {
+      content: "\201C";
+      display: block;
+      font-size: rem(100px);
+      left: -8px;
+      top: -29px;
+      position: relative;
+      height: 0;
+    }
+
+    p {
+      color: #b4b4b4;
+      text-indent: 30px;
+    }
+  }
+}
