@@ -34,7 +34,7 @@ html, body {
   }
 }
 
-@import "~sass-rem";
-@import "./animations/all.scss";
-@import '../components/Header/header.scss';
-@import '../components/Footer/footer.scss';
+@import "../../../node_modules/sass-rem";
+@import "animations/_all";
+@import '../../components/Header/header';
+@import '../../components/Footer/footer';

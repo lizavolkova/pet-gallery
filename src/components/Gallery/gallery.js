@@ -1,9 +1,17 @@
 import './gallery.scss';
+import { EventBus } from '../../core/utils/eventBus';
+import { EVENTS } from '../../core/constants/events';
 
 export class Gallery {
     constructor() {
         this.galleryContainer = document.getElementById("gallery-comp");
         this.images = Array.from(this.galleryContainer.querySelectorAll('img.gallery-image'));
+        this.items = Array.from(this.galleryContainer.querySelectorAll('.item'));
+        window.addEventListener('resize', () => this.resizeAllGridItems(), true);
+
+        this.items.forEach( item => {
+            item.addEventListener('click', this.openModal);
+        })
     }
 
     /**
@@ -11,7 +19,7 @@ export class Gallery {
      */
     load() {
         //TODO: trigger resize on window orientation change
-        window.addEventListener('resize', () => this.resizeAllGridItems(), true);
+
         this.lazyLoadImages();
     }
 
@@ -75,5 +83,10 @@ export class Gallery {
             item.classList.add('loaded');
             img.style.visibility = 'hidden';
         }
+    }
+
+    openModal(e) {
+        const image = e.currentTarget.querySelector('img');
+        EventBus.trigger(EVENTS.OPEN_MODAL, image.src);
     }
 }
