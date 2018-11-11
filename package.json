@@ -4,6 +4,7 @@
   "description": "## Instructions",
   "main": "index.js",
   "scripts": {
+    "precommit": "lint-staged",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open --hot"
@@ -20,11 +21,13 @@
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "cssnano": "^4.1.7",
+    "eslint": "^5.9.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
+    "lint-staged": "^8.0.4",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
@@ -37,5 +40,8 @@
   },
   "dependencies": {
     "sass-rem": "^2.0.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": "eslint"
   }
 }

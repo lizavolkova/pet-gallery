@@ -10,7 +10,7 @@ export class Gallery {
         window.addEventListener('resize', () => this.resizeAllGridItems(), true);
 
         this.items.forEach( item => {
-            item.addEventListener('click', this.openModal);
+           item.addEventListener('click', this.openModal);
         })
     }
 
