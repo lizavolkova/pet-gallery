@@ -4,7 +4,6 @@
   "description": "## Instructions",
   "main": "index.js",
   "scripts": {
-    "precommit": "lint-staged",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open --hot"
@@ -40,6 +39,11 @@
   },
   "dependencies": {
     "sass-rem": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": "eslint"
