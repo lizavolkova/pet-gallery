@@ -1,3 +1,5 @@
+@import "../../../node_modules/sass-rem";
+
 html,
 body {
 	margin: 0;
@@ -5,7 +7,6 @@ body {
 	width: 100%;
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 	background-color: #f6f6f6;
-	padding: rem(10px);
 
 	* {
 		box-sizing: border-box;
@@ -42,9 +43,12 @@ body {
 			filter: blur(1px);
 		}
 	}
+
+	main {
+		padding: rem(10px);
+	}
 }
 
-@import "../../../node_modules/sass-rem";
 @import "animations/_all";
 @import '../../components/Header/header';
 @import '../../components/Footer/footer';

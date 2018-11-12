@@ -6,8 +6,10 @@ export class Gallery {
 	constructor() {
 		this.galleryContainer = document.getElementById('gallery-comp');
 		this.images = Array.from(this.galleryContainer.querySelectorAll('img.gallery-image'));
+		this.notLoadedImages = this.images;
 		this.items = Array.from(this.galleryContainer.querySelectorAll('.item'));
 		window.addEventListener('resize', () => this.resizeAllGridItems(), true);
+		window.addEventListener('scroll', () => this.lazyLoadImages(), true);
 
 		this.items.forEach( item => {
 			item.addEventListener('click', this.openModal);
@@ -27,28 +29,29 @@ export class Gallery {
      * Lazy load images as they enter the viewable area on scroll
      */
 	lazyLoadImages() {
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					const img = entry.target;
-					// create dummy Image element
-					const imgToDownload = new Image();
-					imgToDownload.src = img.dataset.src;
-
-					// when the image src is downloaded, animate it in, and resize the masonry grid
-					imgToDownload.onload = () => {
-						img.src = img.dataset.src;
-						img.classList.add('loaded');
-						this.resizeAllGridItems();
-					};
-					observer.unobserve(entry.target);
-				}
-			});
+		this.notLoadedImages.forEach( (image, index) => {
+			if (this.isInViewport(image) && !image.classList.contains('loaded') ) {
+				const imgToDownload = new Image();
+				imgToDownload.src = image.dataset.src;
+				this.notLoadedImages.splice(index, 1);
+				imgToDownload.onload = () => {
+					image.src = image.dataset.src;
+					image.classList.add('loaded');
+					this.resizeAllGridItems();
+				};
+			}
 		});
+	}
 
-		this.images.forEach( image => {
-			observer.observe(image);
-		});
+	isInViewport(el) {
+		const bounding = el.getBoundingClientRect();
+
+		return (
+			bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
 	}
 
 
