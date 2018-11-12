@@ -1,5 +1,6 @@
 import './gallery.scss';
 import { EventBus } from '../../core/utils/eventBus';
+import { isInViewport } from '../../core/utils/isInViewport';
 import { EVENTS } from '../../core/constants/events';
 
 export class Gallery {
@@ -34,7 +35,7 @@ export class Gallery {
      */
 	lazyLoadImages() {
 		this.notLoadedImages.forEach( (image, index) => {
-			if (this.isInViewport(image) && !image.classList.contains('loaded') ) {
+			if (isInViewport(image) && !image.classList.contains('loaded') ) {
 				const imgToDownload = new Image();
 				imgToDownload.src = image.dataset.src;
 				this.notLoadedImages.splice(index, 1);
@@ -46,18 +47,6 @@ export class Gallery {
 			}
 		});
 	}
-
-	isInViewport(el) {
-		const bounding = el.getBoundingClientRect();
-
-		return (
-			bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-		);
-	}
-
 
 	/**
      * Resize all grid items to create a staggered masonery style grid
