@@ -10,6 +10,10 @@ footer {
 	justify-content: space-between;
 	align-items: center;
 
+	@include responsive('small') {
+		flex-direction: column;
+	}
+
 	p {
 		padding: rem(20px);
 	}
