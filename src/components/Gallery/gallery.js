@@ -14,7 +14,6 @@ export class Gallery {
 		// add event listners
 		window.addEventListener('resize', () => this.resizeAllGridItems(), true);
 		window.addEventListener('scroll', () => this.lazyLoadImages(), true);
-		EventBus.on(EVENTS.CLOSE_MODAL, () => this.resizeAllGridItems());
 
 		this.items.forEach( item => {
 			item.addEventListener('click', this.openModal);
