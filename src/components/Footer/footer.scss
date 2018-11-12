@@ -2,8 +2,35 @@
 @import "../../core/styles/mixins/responsive";
 
 footer {
-	padding: rem(20px);
 	margin-top: rem(50px);
 	background: #f2f2f2;
 	color: #888888;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	p {
+		padding: rem(20px);
+	}
+
+	a {
+		font-size: rem(12px);
+		padding: rem(20px);
+		color: #888888;
+		display: flex;
+		align-items: center;
+
+		span {
+			display: flex;
+			align-items: center;
+		}
+
+		img {
+			width: 20px;
+			height: 20px;
+			margin-left: 10px;
+			opacity: 0.4;
+		}
+	}
 }

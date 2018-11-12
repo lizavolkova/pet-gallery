@@ -3,12 +3,12 @@ import { EventBus } from '../../core/utils/eventBus';
 import { isInViewport } from '../../core/utils/isInViewport';
 import { EVENTS } from '../../core/constants/events';
 
+const LOADED = 'loaded';
+
 export class Gallery {
 	constructor() {
 		// define elements
 		this.galleryContainer = document.getElementById('gallery');
-		this.images = Array.from(this.galleryContainer.querySelectorAll('img.gallery-image'));
-		this.notLoadedImages = this.images;
 		this.items = Array.from(this.galleryContainer.querySelectorAll('.item'));
 
 		// add event listners
@@ -24,8 +24,6 @@ export class Gallery {
      * Load gallery
      */
 	load() {
-		//TODO: trigger resize on window orientation change
-
 		this.lazyLoadImages();
 	}
 
@@ -33,15 +31,16 @@ export class Gallery {
      * Lazy load images as they enter the viewable area on scroll
      */
 	lazyLoadImages() {
-		this.items.forEach( (item, index) => {
+		this.items.forEach( item => {
 			const image = item.querySelector('img');
-			if (isInViewport(item) && !image.classList.contains('loaded') ) {
+
+			if (isInViewport(item) && !image.classList.contains(LOADED) ) {
 				const imgToDownload = new Image();
 				imgToDownload.src = image.dataset.src;
-				this.notLoadedImages.splice(index, 1);
+
 				imgToDownload.onload = () => {
 					image.src = image.dataset.src;
-					image.classList.add('loaded');
+					item.classList.add(LOADED);
 					this.resizeAllGridItems();
 				};
 			}
@@ -52,10 +51,9 @@ export class Gallery {
      * Resize all grid items to create a staggered masonery style grid
      */
 	resizeAllGridItems(){
-		const allItems = document.getElementsByClassName('item');
-		for(let i = 0; i < allItems.length ; i ++){
-			this.resizeGridItem(allItems[i]);
-		}
+		this.items.forEach( (item, i) => {
+			this.resizeGridItem(this.items[i]);
+		});
 	}
 
 	/**
@@ -64,11 +62,9 @@ export class Gallery {
      * @param {element} item
      */
 	resizeGridItem(item) {
-		// find the image inside the grid item
-		const img = item.querySelector('img');
-
 		// only resize the grid item if the image inside has loaded
-		if (img.classList.contains('loaded')) {
+		if (item.classList.contains(LOADED)) {
+			const img = item.querySelector('img');
 			const grid = document.getElementsByClassName('grid')[0];
 			const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
 			const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
@@ -76,11 +72,15 @@ export class Gallery {
 
 			item.style.gridRowEnd = 'span ' + rowSpan;
 			item.style.backgroundImage = `url(${img.src})`;
-			item.classList.add('loaded');
+			item.classList.add(LOADED);
 			img.style.visibility = 'hidden';
 		}
 	}
 
+	/**
+	 * Trigger modal opening
+     * @param {object} e
+     */
 	openModal(e) {
 		const image = e.currentTarget.querySelector('img');
 		EventBus.trigger(EVENTS.OPEN_MODAL, image.src);

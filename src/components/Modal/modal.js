@@ -15,12 +15,19 @@ export class Modal {
 		EventBus.on(EVENTS.OPEN_MODAL, (url) => this.open(url));
 	}
 
+	/**
+	 * Close modal
+     */
 	close() {
 		this.modal.classList.remove('open');
 		document.body.classList.remove('modal-open');
 		EventBus.trigger(EVENTS.CLOSE_MODAL);
 	}
 
+	/**
+	 * Open modal
+     * @param {string} url to image
+     */
 	open(url) {
 		document.body.classList.add('modal-open');
 		this.img.src = url;
