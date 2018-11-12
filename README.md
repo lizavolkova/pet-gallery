@@ -25,7 +25,7 @@ In order to create a scalable project, I broke down the html, js, and scss files
 ### Supported browsers/devices
 This app has been tested on the following environments:
 - iPhone X running iOS12 Chrome and Safari
-- Windows 10 latest versions of Chrome, FF
+- Windows 10 latest versions of Chrome, FF, Edge (no IE11 support)
 - Samsung S8 phone
 
 ### Known issues
