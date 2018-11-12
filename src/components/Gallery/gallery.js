@@ -34,8 +34,9 @@ export class Gallery {
      * Lazy load images as they enter the viewable area on scroll
      */
 	lazyLoadImages() {
-		this.notLoadedImages.forEach( (image, index) => {
-			if (isInViewport(image) && !image.classList.contains('loaded') ) {
+		this.items.forEach( (item, index) => {
+			const image = item.querySelector('img');
+			if (isInViewport(item) && !image.classList.contains('loaded') ) {
 				const imgToDownload = new Image();
 				imgToDownload.src = image.dataset.src;
 				this.notLoadedImages.splice(index, 1);
