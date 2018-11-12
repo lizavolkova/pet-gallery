@@ -1,6 +1,6 @@
 @import "../../core/styles/mixins/responsive";
 
-#gallery-comp {
+#gallery {
 	display: grid;
 	grid-gap: 10px;
 	grid-template-columns: repeat(4, minmax(100px, 1fr));
@@ -8,6 +8,10 @@
 	width: 100%;
 	max-width: 750px;
 	margin: 0 auto;
+
+	@include responsive('medium') {
+		grid-template-columns: repeat(3, minmax(100px, 1fr));
+	}
 
 	@include responsive('small') {
 		grid-template-columns: repeat(2, minmax(100px, 1fr));
@@ -27,5 +31,6 @@
 
 	img {
 		width: 100%;
+		opacity: 0;
 	}
 }

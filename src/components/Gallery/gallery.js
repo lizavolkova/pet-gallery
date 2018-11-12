@@ -6,7 +6,7 @@ import { EVENTS } from '../../core/constants/events';
 export class Gallery {
 	constructor() {
 		// define elements
-		this.galleryContainer = document.getElementById('gallery-comp');
+		this.galleryContainer = document.getElementById('gallery');
 		this.images = Array.from(this.galleryContainer.querySelectorAll('img.gallery-image'));
 		this.notLoadedImages = this.images;
 		this.items = Array.from(this.galleryContainer.querySelectorAll('.item'));

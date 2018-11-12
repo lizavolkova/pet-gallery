@@ -11,7 +11,7 @@
 		height: 100%;
 		background-color: rgba(255, 255, 255, 0.7);
 		opacity: 0;
-		transition: all 0.45s ease-in-out;
+		transition: all 0.6s ease-in-out;
 		pointer-events: none;
 	}
 
@@ -30,6 +30,8 @@
 
 		@include responsive('small') {
 			max-width: 80%;
+			transform: translate(-50%, -50%) scale(0.1);
+			transition: opacity 0.7s ease-in-out, transform 0.5s ease-in-out 0.5s;
 		}
 	}
 
@@ -70,14 +72,13 @@
 
 	.modal-img {
 		display: flex;
-		z-index: 102;
 		justify-content: flex-end;
 		align-items: flex-end;
 		width: 60%;
 		height: 100%;
 		overflow: hidden;
-		opacity: 0;
-		transition: all 0.45s ease-in-out 1s;
+		z-index: 102;
+		background-color: white;
 
 		@include responsive('small') {
 			width: 100%;
@@ -86,6 +87,8 @@
 		img {
 			width: 100%;
 			height: auto;
+			opacity: 0;
+			transition: all 0.45s ease-in-out 1s;
 		}
 	}
 
@@ -99,10 +102,12 @@
 		background-color: transparent;
 		opacity: 0;
 		transform: translateX(-100%);
-		transition: all 0.45s linear 1s;
+		transition: all 0.3s linear 0.8s;
+		z-index: 101;
 
 		@include responsive('small') {
 			width: 100%;
+			transform: translate(0, -100%);
 		}
 	}
 
@@ -118,6 +123,10 @@
 		.modal-body {
 			opacity: 1;
 			transform: translate(-50%, -50%);
+
+			@include responsive('small') {
+				transform: translate(-50%, -50%) scale(1);
+			}
 		}
 
 		.modal-close-btn {
@@ -125,7 +134,7 @@
 			opacity: 1;
 		}
 
-		.modal-img {
+		.modal-img img {
 			transform: translate(0, 0);
 			opacity: 1;
 		}
@@ -133,6 +142,10 @@
 		.modal-text {
 			opacity: 1;
 			transform: translateX(0);
+
+			@include responsive('small') {
+				transform: translateY(0);
+			}
 		}
 	}
 }

@@ -36,6 +36,10 @@ body {
 		margin: 0;
 	}
 
+	h3 {
+		margin: rem(10px) 0;
+	}
+
 	.content-wrapper {
 		filter: blur(0);
 		transition: all 0.2s ease-in-out;
