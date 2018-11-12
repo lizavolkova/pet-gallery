@@ -13,7 +13,8 @@
         <div class="content-wrapper">
             <%= require('./components/Header/header.html') %>
             <main>
-                <%= require('./components/Gallery/gallery.html') %>
+                <%= require(`!ejs-loader!./components/Gallery/gallery.ejs`) %>
+                <!--<%= require('./components/Gallery/gallery.html') %>-->
             </main>
             <%= require('./components/Footer/footer.html') %>
         </div>

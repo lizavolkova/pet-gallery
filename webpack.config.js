@@ -31,7 +31,8 @@ module.exports = {
                 use: {
                     loader: 'html-loader',
                     options: {
-                        attrs: false
+                        attrs: false,
+                        interpolate: true
                     }
                 }
             },
@@ -43,6 +44,15 @@ module.exports = {
                 test: /\.(jpg|png|gif|svg)$/,
                 loader: 'image-webpack-loader',
                 enforce: 'pre'
+            },
+            {
+                test: /\.ejs$/,
+                loader: 'ejs-loader',
+                query: {
+                    variable: 'data',
+                    interpolate : '\\{\\{(.+?)\\}\\}',
+                    evaluate : '\\[\\[(.+?)\\]\\]'
+                }
             }
         ]
     },
@@ -55,7 +65,7 @@ module.exports = {
             inject: false,
             hash: true,
             title: 'My Awesome application',
-            template: './src/index.html.ejs',
+            template: '!!ejs-loader!./src/index.html.ejs',
             //template: require('html-webpack-template'),
             filename: 'index.html'
         }),
