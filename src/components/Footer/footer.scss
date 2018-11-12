@@ -1,5 +1,9 @@
+@import "../../../node_modules/sass-rem";
+@import "../../core/styles/mixins/responsive";
+
 footer {
 	padding: rem(20px);
 	margin-top: rem(50px);
-	background: #c1c1c1;
+	background: #f2f2f2;
+	color: #888888;
 }

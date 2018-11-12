@@ -7,7 +7,6 @@ body {
 	font-size: 16px;
 	width: 100%;
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	background-color: #f6f6f6;
 
 	* {
 		box-sizing: border-box;
@@ -34,6 +33,7 @@ body {
 
 	p {
 		margin: 0;
+		font-size: rem(12px);
 	}
 
 	h3 {

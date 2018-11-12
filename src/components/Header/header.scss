@@ -1,27 +1,47 @@
+@import "../../../node_modules/sass-rem";
+
 .global-header {
-  padding: rem(20px);
+	padding: rem(20px);
 
-  blockquote {
-    max-width: 550px;
-    text-align: left;
-    margin: rem(20px);
-    padding: rem(20px);
-    border-left: 2px solid #428bca;
-    background-color: #fff;
+	h1 {
+		text-transform: uppercase;
+		text-align: center;
+	}
 
-    &:before {
-      content: "\201C";
-      display: block;
-      font-size: rem(100px);
-      left: -8px;
-      top: -29px;
-      position: relative;
-      height: 0;
-    }
+	blockquote {
+		max-width: 500px;
+		text-align: left;
+		margin: 0 auto;
+		padding: rem(20px);
+		background-color: white;
 
-    p {
-      color: #b4b4b4;
-      text-indent: 30px;
-    }
-  }
+		&::before {
+			content: "\201C";
+			display: block;
+			font-size: rem(160px);
+			left: 0;
+			top: -50px;
+			opacity: 0.1;
+			color: grey;
+			position: relative;
+			height: 0;
+		}
+
+		p {
+			color: #b4b4b4;
+			text-align: center;
+			font-style: italic;
+			font-size: rem(18px);
+		}
+
+		cite {
+			display: block;
+			text-align: center;
+			text-transform: uppercase;
+			font-size: rem(14px);
+			font-style: normal;
+			font-weight: bold;
+			padding: rem(10px) 0;
+		}
+	}
 }

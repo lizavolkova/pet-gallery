@@ -55,7 +55,7 @@ module.exports = {
             inject: false,
             hash: true,
             title: 'My Awesome application',
-            template: './src/index.html.ejs',
+            template: './src/index.ejs',
             //template: require('html-webpack-template'),
             filename: 'index.html'
         }),
@@ -65,7 +65,7 @@ module.exports = {
         }])
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        disableHostCheck: true,
         compress: true,
         port: 9000
     }
