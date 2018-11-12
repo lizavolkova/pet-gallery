@@ -19,6 +19,7 @@ export class Modal {
 	close() {
 		this.modal.classList.remove('open');
 		this.mainContent.classList.remove('modal-open');
+		EventBus.trigger(EVENTS.CLOSE_MODAL);
 	}
 
 	open(url) {

@@ -4,12 +4,16 @@ import { EVENTS } from '../../core/constants/events';
 
 export class Gallery {
 	constructor() {
+		// define elements
 		this.galleryContainer = document.getElementById('gallery-comp');
 		this.images = Array.from(this.galleryContainer.querySelectorAll('img.gallery-image'));
 		this.notLoadedImages = this.images;
 		this.items = Array.from(this.galleryContainer.querySelectorAll('.item'));
+
+		// add event listners
 		window.addEventListener('resize', () => this.resizeAllGridItems(), true);
 		window.addEventListener('scroll', () => this.lazyLoadImages(), true);
+		EventBus.on(EVENTS.CLOSE_MODAL, () => this.resizeAllGridItems());
 
 		this.items.forEach( item => {
 			item.addEventListener('click', this.openModal);
