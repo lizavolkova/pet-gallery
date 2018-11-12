@@ -96,10 +96,10 @@
 		width: 40%;
 		height: 100%;
 		padding: rem(20px);
-		background-color: white;
+		background-color: transparent;
 		opacity: 0;
 		transform: translateX(-100%);
-		transition: all 0.45s ease-in-out 1s;
+		transition: all 0.45s linear 1s;
 
 		@include responsive('small') {
 			width: 100%;

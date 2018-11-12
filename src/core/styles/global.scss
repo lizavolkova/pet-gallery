@@ -38,11 +38,17 @@ body {
 	.content-wrapper {
 		filter: blur(0);
 		transition: all 0.2s ease-in-out;
+	}
 
-		&.modal-open {
+	&.modal-open {
+		overflow: hidden;
+		position: relative;
+
+		.content-wrapper {
 			filter: blur(1px);
 		}
 	}
+
 
 	main {
 		padding: rem(10px);

@@ -4,7 +4,6 @@ import { EVENTS } from '../../core/constants/events';
 
 export class Modal {
 	constructor() {
-		this.mainContent = document.querySelector('.content-wrapper');
 		this.modal = document.getElementById('modal');
 		this.overlay = document.querySelector('.modal-overlay');
 		this.closeBtn = this.modal.querySelector('.modal-close-btn');
@@ -18,12 +17,12 @@ export class Modal {
 
 	close() {
 		this.modal.classList.remove('open');
-		this.mainContent.classList.remove('modal-open');
+		document.body.classList.remove('modal-open');
 		EventBus.trigger(EVENTS.CLOSE_MODAL);
 	}
 
 	open(url) {
-		this.mainContent.classList.add('modal-open');
+		document.body.classList.add('modal-open');
 		this.img.src = url;
 		this.modal.classList.add('open');
 	}
