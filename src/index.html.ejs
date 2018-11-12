@@ -10,11 +10,14 @@
     </head>
     <body>
         <%= require('./components/Modal/modal.html') %>
-        <%= require('./components/Header/header.html') %>
-        <main>
-            <%= require('./components/Gallery/gallery.html') %>
-        </main>
-        <%= require('./components/Footer/footer.html') %>
+        <div class="content-wrapper">
+            <%= require('./components/Header/header.html') %>
+            <main>
+                <%= require('./components/Gallery/gallery.html') %>
+            </main>
+            <%= require('./components/Footer/footer.html') %>
+        </div>
+
         <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     </body>
 </html>

@@ -1,36 +1,31 @@
 @import "../../core/styles/mixins/responsive";
 
 #gallery-comp {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, minmax(100px, 1fr));
-  grid-auto-rows: 5px;
-  width: 100%;
-  max-width: 750px;
-  margin: 0 auto;
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(4, minmax(100px, 1fr));
+	grid-auto-rows: 5px;
+	width: 100%;
+	max-width: 750px;
+	margin: 0 auto;
 
-  @include responsive('small') {
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
-  }
+	@include responsive('small') {
+		grid-template-columns: repeat(2, minmax(100px, 1fr));
+	}
 
-  .item {
-    background-size: cover;
-    object-fit: cover;
-    grid-row-end: span 17;
+	.item {
+		background-size: cover;
+		object-fit: cover;
+		grid-row-end: span 17;
+		cursor: pointer;
 
+		&.loaded {
+			transform: translateY(200px);
+			animation: moveUpFade 0.65s ease forwards;
+		}
+	}
 
-    &.loaded {
-      transform: translateY(200px);
-      animation: moveUpFade 0.65s ease forwards;
-    }
-  }
-
-  img {
-    width: 100%;
-    //min-height: 50px;
-  }
-
-
-
-
+	img {
+		width: 100%;
+	}
 }
