@@ -36,10 +36,10 @@ In order to create a scalable project, I broke down the html, js, and scss files
 
 ### Supported browsers/devices
 This app has been tested on the following environments:
-- iPhone X running iOS12 Chrome and Safari
-- Samsung S8 phone
-- Mac OS Chrome
-- Windows 10 latest versions of Chrome, FF, Edge (no IE11 support)
+- iPhone X: Chrome and Safari
+- Samsung S8: Chrome
+- Mac OS: Chrome, FF 
+- Windows 10: Chrome, FF, Edge (no IE11 support)
 
 ### Known issues
 Some known issues I noticed while testing, or enhancements to add to the future
