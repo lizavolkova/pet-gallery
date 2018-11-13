@@ -1,5 +1,17 @@
 # Pet Gallery 
-
+## Running the project
+To install dependencies:
+```bash
+  npm install
+```
+To start the dev server on port 9000:
+```bash
+  npm start
+```
+To build the project:
+```bash
+  npm run build
+```
 ## Requirements
 
 Build an image gallery of pets up for adoption. Use vanilla JS, CSS, and HTML An optional framework, pre- or post-processor are allowed, if they add value. Solution must also be SEO optimized. 
@@ -25,8 +37,9 @@ In order to create a scalable project, I broke down the html, js, and scss files
 ### Supported browsers/devices
 This app has been tested on the following environments:
 - iPhone X running iOS12 Chrome and Safari
-- Windows 10 latest versions of Chrome, FF, Edge (no IE11 support)
 - Samsung S8 phone
+- Mac OS Chrome
+- Windows 10 latest versions of Chrome, FF, Edge (no IE11 support)
 
 ### Known issues
 Some known issues I noticed while testing, or enhancements to add to the future
@@ -38,5 +51,6 @@ Some known issues I noticed while testing, or enhancements to add to the future
 - Modal is specific to rendering an image and dog description, could be made more generic
 - I'm not sure how well re-rendering of the masonry grid will work with 2000 nodes on the page. This would need to be tested and further optimized, such as restricting the re-render to only the visible viewport, or possibly breaking down the data into virtual "pages" and re-rendering those "pages".
 - Reflow of the page could be further test and optimized
+- Since the images are laoded via Promises, sometimes the ones further down the page are loaded before the ones higher up, which causes some jumps in the grid. This can be optimized by possibly preventing rendering of the image until the ones before it are loaded.
 
 
