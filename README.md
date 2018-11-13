@@ -1,6 +1,6 @@
 # Pet Gallery 
 ## Demo
-<a href="www.lizavolkova.com/pet-gallery" target="_blank">Open Demo</a>
+<a href="http://www.lizavolkova.com/pet-gallery" target="_blank">Open Demo</a>
 ## Running the project
 To install dependencies:
 ```bash
