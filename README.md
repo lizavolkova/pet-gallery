@@ -1,4 +1,6 @@
 # Pet Gallery 
+## Demo
+<a href="www.lizavolkova.com/pet-gallery" target="_blank">Open Demo</a>
 ## Running the project
 To install dependencies:
 ```bash
@@ -29,11 +31,14 @@ Build an image gallery of pets up for adoption. Use vanilla JS, CSS, and HTML An
 "Most people find out about us from internet searches. We need this page to appear towards the top of search results."
 
 ## Solution
-I decided to use a CSS-grid to create a custom masonry style layout without having to use any external libraries. In order to keep the page SEO optimized, I use webpack to compile an index.html file with all the necessary markup for the app to run, and search enginge to index. 
-I then lazy load all the images as they scroll into view, to keep the page load time low and will and then as each image is loaded, I render them into the masonry grid. 
+In order to keep the page SEO optimized, I use webpack to compile an index.html file with all the necessary markup for the app to run, and search enginges to index. 
+I then lazy load all the images as they scroll into view, and make sure that there is no page-blocking JS, which keeps the page laod time hight. 
 
 In order to create a scalable project, I broke down the html, js, and scss files into separate components and use webpack to compile everything into one js, css, and html file. Additionally, I have added ESLint and Stylelint into the project to keep consist code standards across all files.
 
+To create the scattered grid, I decided to use a CSS-grid to create a custom masonry style layout without having to use any external libraries. It is optimized to cause minimal reflows and lazy loads images, however I'm sure it can be optimized further. There is also a different animation that run when opening and closing the modal on mobile vs desktop devices, which creates a slightly better UX across the two formats.
+You can also notice that large devices will blur the background when a modal opens, but smaller devices will not. This was intentional since blur is an intensive operation that when testing, was causing performance issues on phones.
+ 
 ### Supported browsers/devices
 This app has been tested on the following environments:
 - iPhone X: Chrome and Safari
@@ -41,9 +46,9 @@ This app has been tested on the following environments:
 - Mac OS: Chrome, FF 
 - Windows 10: Chrome, FF, Edge (no IE11 support)
 
-### Known issues
-Some known issues I noticed while testing, or enhancements to add to the future
-- Images are not optimized, would be great to add compression and resizing to build process
+### Known issues / enhancements
+Some known issues I noticed while testing, or enhancements to add to the future:
+- Images are not optimized, would be great to add compression and resizing to build process. This would also boost SEO.
 - On mobile, when scrolling quickly, there is a visible resizing of the images that causes a flicker
 - Add auto-fix for style linting, like there currently is for JS linting
 - Create color constants SCSS file 
