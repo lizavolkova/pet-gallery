@@ -5,6 +5,7 @@
  * @returns {boolean} is element in viewport
  */
 export const isInViewport = (el) => {
+	// TODO: check why partial element isn't loading, only when full element is in the viewport
 	const rect = el.getBoundingClientRect();
 	const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
 	const windowWidth = (window.innerWidth || document.documentElement.clientWidth);

@@ -37,6 +37,6 @@ Some known issues I noticed while testing, or enhancements to add to the future
 - Add AA compliance
 - Modal is specific to rendering an image and dog description, could be made more generic
 - I'm not sure how well re-rendering of the masonry grid will work with 2000 nodes on the page. This would need to be tested and further optimized, such as restricting the re-render to only the visible viewport, or possibly breaking down the data into virtual "pages" and re-rendering those "pages".
-
+- Reflow of the page could be further test and optimized
 
 

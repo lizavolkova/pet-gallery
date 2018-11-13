@@ -21,7 +21,7 @@ export class Modal {
 	close() {
 		this.modal.classList.remove('open');
 		document.body.classList.remove('modal-open');
-		EventBus.trigger(EVENTS.CLOSE_MODAL);
+		EventBus.trigger(EVENTS.CLOSE_MODAL); // event not used in this iteration of the project, placeholder for now
 	}
 
 	/**

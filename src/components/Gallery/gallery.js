@@ -1,15 +1,18 @@
 import './gallery.scss';
 import { EventBus } from '../../core/utils/eventBus';
 import { isInViewport } from '../../core/utils/isInViewport';
+import { imageLoaded } from '../../core/utils/imageLoaded';
 import { EVENTS } from '../../core/constants/events';
 
 const LOADED = 'loaded';
 
 export class Gallery {
+
 	constructor() {
 		// define elements
 		this.galleryContainer = document.getElementById('gallery');
 		this.items = Array.from(this.galleryContainer.querySelectorAll('.item'));
+		this.itemsNotLoaded = this.items;
 
 		// add event listners
 		window.addEventListener('resize', () => this.resizeAllGridItems(), true);
@@ -29,23 +32,35 @@ export class Gallery {
 
 	/**
      * Lazy load images as they enter the viewable area on scroll
+	 * As soon as an item is loaded, remove from the this.itemsNotLoaded array
+	 * This improves performance by limiting how many times to iterate through the DOM
      */
 	lazyLoadImages() {
-		this.items.forEach( item => {
-			const image = item.querySelector('img');
+		return Promise.all(this.itemsNotLoaded.map((item, index) => {
+			// check that the item is in the viewport
+			if (isInViewport(item)) {
+				return new Promise(res => {
+					// get image element inside item
+					const image = item.querySelector('img');
 
-			if (isInViewport(item) && !image.classList.contains(LOADED) ) {
-				const imgToDownload = new Image();
-				imgToDownload.src = image.dataset.src;
-
-				imgToDownload.onload = () => {
-					image.src = image.dataset.src;
-					item.classList.add(LOADED);
-					this.resizeAllGridItems();
-				};
+					// wait for image to load
+					imageLoaded(image).then( () => {
+						// update CSS class to trigger loaded animation, and resize the grid item to fit
+						image.src = image.dataset.src;
+						item.classList.add(LOADED);
+						this.resizeGridItem(item, index);
+						res(item);
+					});
+				});
 			}
-		});
+		}))
+			.then(() => {
+				return this.itemsNotLoaded = this.itemsNotLoaded.filter((item) => {
+					return !item.classList.contains(LOADED);
+				});
+			});
 	}
+
 
 	/**
      * Resize all grid items to create a staggered masonery style grid
